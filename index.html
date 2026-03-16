@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Builder - Fantasy Map Maker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+
+        <!-- Top Toolbar -->
+        <div class="top-toolbar">
+            <button class="btn" id="btn-new" title="New Map">
+                <span class="btn-icon">&#x1F5FA;</span> New
+            </button>
+            <button class="btn" id="btn-save" title="Save Map (JSON)">
+                <span class="btn-icon">&#x1F4BE;</span> Save
+            </button>
+            <button class="btn" id="btn-load" title="Load Map (JSON)">
+                <span class="btn-icon">&#x1F4C2;</span> Load
+            </button>
+            <button class="btn" id="btn-export" title="Export as PNG">
+                <span class="btn-icon">&#x1F5BC;</span> Export
+            </button>
+            <button class="btn" id="btn-generate" title="Generate World">
+                <span class="btn-icon">&#x1F30D;</span> Generate
+            </button>
+
+            <div class="separator"></div>
+
+            <button class="btn" id="btn-undo" title="Undo (Ctrl+Z)" disabled>
+                <span class="btn-icon">&#x21A9;</span> Undo
+            </button>
+            <button class="btn" id="btn-redo" title="Redo (Ctrl+Y)" disabled>
+                <span class="btn-icon">&#x21AA;</span> Redo
+            </button>
+
+            <div class="separator"></div>
+
+            <button class="btn" id="btn-zoom-in" title="Zoom In">
+                <span class="btn-icon">&#x1F50D;</span> +
+            </button>
+            <button class="btn" id="btn-zoom-out" title="Zoom Out">
+                <span class="btn-icon">&#x1F50D;</span> -
+            </button>
+<button class="btn" id="btn-nations" title="Toggle Nation Overlay">
+                <span class="btn-icon">&#x1F3F3;</span> Nations
+            </button>
+
+            <div class="separator"></div>
+
+            <button class="btn" id="btn-text-up" title="Increase Text Size">
+                <span class="btn-icon">A</span> +
+            </button>
+            <button class="btn" id="btn-text-down" title="Decrease Text Size">
+                <span class="btn-icon">A</span> -
+            </button>
+            <span class="text-scale-label" id="text-scale-label">100%</span>
+
+            <div class="separator"></div>
+
+            <input type="text" class="map-name-input" id="map-name" placeholder="Map Name..." value="Untitled Map" />
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Tools -->
+                <div class="sidebar-section">
+                    <h4>Tools</h4>
+                    <div class="tool-buttons" id="tool-buttons"></div>
+                </div>
+
+                <!-- Brush Settings -->
+                <div class="sidebar-section">
+                    <h4>Brush Settings</h4>
+                    <div class="setting-row">
+                        <label>Size</label>
+                        <input type="range" id="brush-size" min="1" max="20" value="3" />
+                        <span class="setting-value" id="brush-size-label">3</span>
+                    </div>
+                    <div class="setting-row">
+                        <label>Opacity</label>
+                        <input type="range" id="brush-opacity" min="10" max="100" value="100" />
+                        <span class="setting-value" id="brush-opacity-label">100%</span>
+                    </div>
+                    <div class="toggle-row">
+                        <input type="checkbox" id="soft-edge" />
+                        <label for="soft-edge">Soft edge</label>
+                    </div>
+                </div>
+
+                <!-- Layers -->
+                <div class="sidebar-section">
+                    <h4>Layers</h4>
+                    <div id="layer-panel"></div>
+                </div>
+
+                <!-- Nations -->
+                <div class="sidebar-section">
+                    <h4>Nations</h4>
+                    <div id="nation-panel"></div>
+                </div>
+
+                <!-- Terrain Palette -->
+                <div class="sidebar-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+                    <h4>Terrain</h4>
+                    <div class="terrain-palette" id="terrain-palette"></div>
+                </div>
+            </div>
+
+            <!-- Canvas Area -->
+            <div class="canvas-container">
+                <canvas id="map-canvas"></canvas>
+                <div class="status-bar" id="status-bar">Ready</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
